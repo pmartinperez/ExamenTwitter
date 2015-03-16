@@ -6,13 +6,16 @@ import twitter4j.TwitterException;
 
 /**
  * Clase principal del proyecto donde encontramos un menu
+ *
  * @author Patricia Martin
  * @version 1.0
  */
 public class TwitterCod {
 
     /**
-     * Menu con distintas opciones con la que podemos llamar a los metodos que necesitamos
+     * Menu con distintas opciones con la que podemos llamar a los metodos que
+     * necesitamos
+     *
      * @param args the command line arguments
      * @throws twitter4j.TwitterException
      */
@@ -27,7 +30,7 @@ public class TwitterCod {
 
             switch (opcion) {
                 case 0:
-                    
+
                     metodos1.getTimeLine();
                     break;
                 case 1:
@@ -36,7 +39,7 @@ public class TwitterCod {
                 case 2:
                     String texto = JOptionPane.showInputDialog("Introducir tweet");
                     metodos1.postTweet(texto);
-                
+
                 case 3:
                     System.exit(0);
             }
