@@ -1,15 +1,20 @@
 
 package twittercod;
 
+
 import java.util.List;
+import twitter4j.DirectMessage;
+
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.TwitterException;
-import twitter4j.conf.ConfigurationBuilder;
 
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+
+
+import twitter4j.conf.ConfigurationBuilder;
 /**
  * Clase con distintos metodos para utilizar Twitter
  * @author Patripon
@@ -20,15 +25,19 @@ public class MetodosTwitter {
     Twitter twitter;
     
    
-    public MetodosTwitter() {
+   public MetodosTwitter() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("consumerKey") 
-                .setOAuthConsumerSecret("consumerSecret") 
-                .setOAuthAccessToken("accesToken") 
-                .setOAuthAccessTokenSecret("accesTokenSecret");
+                .setOAuthConsumerKey("mHKck1YDvlTzDJsCkJZcl52Wn") 
+                .setOAuthConsumerSecret("SHK3B2SLd69cB6UbSZYwY1mw5GhOBXkBaYNrDwtzIrgAmwhx7N") 
+                .setOAuthAccessToken("963423895-i74zIBSoeDOHdx45Lao7ReiXtdhOP7SAOKFOyWk7") 
+                .setOAuthAccessTokenSecret("31Rsy82hgxJwwtpt5DO3uvyiFrQvxlrWOAtMuziKodcnl");
         twitter = new TwitterFactory(cb.build()).getInstance();
+       
     }
+    
+   
+    
     
     /**
      * Metodo que nos muestra el timeline de Twitter
@@ -66,5 +75,11 @@ public class MetodosTwitter {
         Status status3 = twitter.updateStatus(texto);
         System.out.println("Successfully updated the status to [" + status3.getText() + "].");
     }
-
+    
+    //SENDING, RECEIVING DIRECT MESSAGES
+    public void senRecTweet(String nombre, String mensaje) throws TwitterException{
+    //Twitter sender = TwitterFactory.getSingleton();
+    DirectMessage message = twitter.sendDirectMessage(nombre, mensaje);
+    System.out.println("Sent: " + message.getText() + " to @" + message.getRecipientScreenName());
+    }
 }
