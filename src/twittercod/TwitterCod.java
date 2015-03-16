@@ -6,7 +6,7 @@ import twitter4j.TwitterException;
 
 /**
  * Clase principal del proyecto donde encontramos un menu
- * @author Patripon
+ * @author Patricia Martin
  * @version 1.0
  */
 public class TwitterCod {
@@ -19,7 +19,7 @@ public class TwitterCod {
     public static void main(String[] args) throws TwitterException, IOException {
         MetodosTwitter metodos1 = new MetodosTwitter();
 
-        String[] opciones = {"Mostrar TimeLine", "Buscar Tweet", "Tweetear","Enviar mensaje privado", "Cerrar"};
+        String[] opciones = {"Mostrar TimeLine", "Buscar Tweet", "Tweetear", "Cerrar"};
         int opcion;
         do {
             opcion = JOptionPane.showOptionDialog(null, "Que quieres hacer?", "Opciones", JOptionPane.DEFAULT_OPTION,
@@ -36,11 +36,8 @@ public class TwitterCod {
                 case 2:
                     String texto = JOptionPane.showInputDialog("Introducir tweet");
                     metodos1.postTweet(texto);
-                case 3: String nombre = JOptionPane.showInputDialog("Introducir nombre");
-                    String mensaje = JOptionPane.showInputDialog("Introducir mensaje");
-                    metodos1.senRecTweet(nombre, mensaje);
-                    break;
-                case 4:
+                
+                case 3:
                     System.exit(0);
             }
         } while (opcion != 4);

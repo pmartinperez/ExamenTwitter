@@ -17,14 +17,18 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 /**
  * Clase con distintos metodos para utilizar Twitter
- * @author Patripon
+ * @author Patricia Martin
  * @version 1.0
  */
 public class MetodosTwitter {
-
+/**
+     * twitter atributo de tipo Twitter
+     */
     Twitter twitter;
     
-   
+    /**
+    * Constructor de la clase. Determinamos la configuracion y autorizacion de la aplicacion.
+    */
    public MetodosTwitter() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
@@ -39,13 +43,14 @@ public class MetodosTwitter {
    
     
     
-    /**
+     /**
      * Metodo que nos muestra el timeline de Twitter
-     * @throws TwitterException 
+     *
+     * @throws TwitterException
      */
     public void getTimeLine() throws TwitterException {
         List<Status> statuses = twitter.getHomeTimeline();
-        System.out.println("Showing home timeline.");
+        System.out.println("Mostrar timeline");
         for (Status status : statuses) {
             System.out.println(status.getUser().getName() + ":" + status.getText());
         }
@@ -53,12 +58,13 @@ public class MetodosTwitter {
     }
     
     /**
-     * Metodo para buscar informacion en Twitter
-     * @param buscar texto que introduce el usuario y el que vamos a buscar
-     * @throws TwitterException 
+     * Metodo para buscar un texto en Twitter
+     *
+     * @param buscarTexto texto que introduce el usuario y que vamos a buscar
+     * @throws TwitterException
      */
-    public void searchTweets(String buscar) throws TwitterException {
-        Query query = new Query(buscar);
+    public void searchTweets(String buscarTexto) throws TwitterException {
+        Query query = new Query(buscarTexto);
         QueryResult result = twitter.search(query);
         //le damos otro nombre a status porque ya existe en el codigo anterior
         for (Status status2 : result.getTweets()) {
@@ -68,18 +74,14 @@ public class MetodosTwitter {
 
     /**
      * Metodo para escribir un tweet
-     * @param texto texto que introduce el usuario y el que se escribira en Twitter Se ha hecho 
-     * @throws TwitterException 
+     *
+     * @param textoTweet texto que introduce el usuario y que se escribira en Tweeter
+     * @throws TwitterException
      */
-    public void postTweet(String texto) throws TwitterException {
-        Status status3 = twitter.updateStatus(texto);
+    public void postTweet(String textoTweet) throws TwitterException {
+        Status status3 = twitter.updateStatus(textoTweet);
         System.out.println("Successfully updated the status to [" + status3.getText() + "].");
     }
     
-    //SENDING, RECEIVING DIRECT MESSAGES
-    public void senRecTweet(String nombre, String mensaje) throws TwitterException{
-    //Twitter sender = TwitterFactory.getSingleton();
-    DirectMessage message = twitter.sendDirectMessage(nombre, mensaje);
-    System.out.println("Sent: " + message.getText() + " to @" + message.getRecipientScreenName());
-    }
+   
 }
