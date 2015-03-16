@@ -1,7 +1,6 @@
 package twittercod;
 
 import java.util.List;
-
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
